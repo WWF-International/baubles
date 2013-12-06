@@ -126,13 +126,13 @@
         				c.arc(0,0,v.radius,0,2*Math.PI/180,true);
         				c.closePath();
         				colour = 'hsl(' + v.colour + ',100%,60%)';
-        				//myColour = 'hsl(' + v.colour + ',100%,50%)',
-        				//myColour2 = 'hsl(' + (v.colour+20) + ',100%,50%)';
-        				//var g = c.createRadialGradient(v.posX,v.posY,1,v.posX,v.posY,v.radius);
-                        //    g.addColorStop(0, myColour);
-                        //    g.addColorStop(1, myColour2);
-                        //c.fillStyle = g;
-        				c.fillStyle = colour;
+        				myColour = 'hsl(' + v.colour + ',100%,65%)',
+        				myColour2 = 'hsl(' + v.colour + ',100%,40%)';
+        				var g = c.createRadialGradient(0,0,0,0,0,v.radius);
+                            g.addColorStop(0, myColour);
+                            g.addColorStop(1, myColour2);
+                        c.fillStyle = g;
+        				//c.fillStyle = colour;
                         //c.lineWidth = 1;
                         //c.strokeStyle = backgroundColour;
                         //c.stroke();
