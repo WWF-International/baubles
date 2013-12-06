@@ -72,7 +72,7 @@
 			}
 			
 			function Visitor() {
-			    this.posX = random(radius/2,(canvas.height-radius/2)-130);
+			    this.posX = random(radius/2,(canvas.height-radius/2));
 			    this.posY = random(radius/2,canvas.width-radius/2);
 			    this.radius = random(radius-3,radius);
 			    //this.xVel = random(-0.7,0.7);
@@ -105,14 +105,20 @@
                         c.beginPath();
         				c.arc(0,0,v.radius,0,2*Math.PI/180,true);
         				c.closePath();
-        				c.fillStyle = 'hsl('+v.colour+',100%,50%)';
-        				//c.fillStyle = colour;
+        				colour = 'hsl(' + v.colour + ',100%,60%)';
+        				//myColour = 'hsl(' + v.colour + ',100%,50%)',
+        				//myColour2 = 'hsl(' + (v.colour+20) + ',100%,50%)';
+        				//var g = c.createRadialGradient(v.posX,v.posY,1,v.posX,v.posY,v.radius);
+                        //    g.addColorStop(0, myColour);
+                        //    g.addColorStop(1, myColour2);
+                        //c.fillStyle = g;
+        				c.fillStyle = colour;
                         //c.lineWidth = 1;
                         //c.strokeStyle = backgroundColour;
                         //c.stroke();
                         c.shadowColor = 'hsl('+v.colour+',100%,70%)';
                         //c.shadowColor = 'black';
-                        c.shadowBlur = 5;
+                        c.shadowBlur = 3;
                         c.shadowOffsetX = 0;
                         c.shadowOffsetY = 0;  
         				c.fill();
@@ -135,18 +141,18 @@
                 
                 
                 c.save();
-                c.translate(datePos, canvas.height-35);
+                c.translate(datePos, canvas.height-65);
                 c.rotate(270*Math.PI/180);
                     c.fillStyle = "white";
-                    c.font = "bold 12px Arial";
+                    c.font = "bold 40px Arial";
                     c.fillText( day + " " + month + " " + " " + hours + ":00", 0,0);
                 c.restore();
                 
                 c.beginPath();
-                c.moveTo(datePos-10, canvas.height-30);
-                c.lineTo(datePos, canvas.height-30);
-                c.lineTo(datePos-4, canvas.height-15);
-                c.lineTo(datePos-10, canvas.height-30);
+                c.moveTo(datePos-30, canvas.height-60);
+                c.lineTo(datePos, canvas.height-60);
+                c.lineTo(datePos-15, canvas.height-15);
+                c.lineTo(datePos-30, canvas.height-60);
                 c.closePath();
                 c.fillStyle = 'white';
                 c.fill();
