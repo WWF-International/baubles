@@ -27,8 +27,11 @@
             stop
         </div>
         <div id="date"></div>
-        <div id="visits"></div><script type="text/javascript" src="arr.js">
-</script><script type="text/javascript">
+        <div id="visits"></div>
+        
+        <script type="text/javascript" src="arr.js"></script>
+
+<script type="text/javascript">
     (function () {
         "use strict";
         /*jslint browser: true*/
@@ -40,30 +43,30 @@
         var elemVisits = document.getElementById("visits");
         var elemDateDiv = document.getElementById("date");
         var elemStop = document.getElementById("stop");
+        
         elemStop.onclick = function () {
-        window.clearInterval(a);
+            window.clearInterval(a);
         };
         var hour = 0;
 
 
         function getData() {
-        var visits = visitData[hour];
-        var visitTime = new Date(1351987200000 + (hour * 60 * 60 * 1000));//create date object with milliseconds date of first hour plus milliseconds in an hour * hour index
-        doTheAwesome(visits, visitTime);
-        hour = hour + 1;
+            var visits = visitData[hour];
+            var visitTime = new Date(1351987200000 + (hour * 60 * 60 * 1000));//create date object with milliseconds date of first hour plus milliseconds in an hour * hour index
+            doTheAwesome(visits, visitTime);
+            hour = hour + 1;
         }
 
 
         function doTheAwesome(visits, visitTime) {
-        elemVisits.textContent = new Array(visits).join(". ");
-
-
-        var day = visitTime.getDate() + 1;
-        var month = visitTime.getMonth() + 1;
-        var hours = visitTime.getHours() + 1;
-        elemDateDiv.textContent = day + "/" + month + " " + hours + ":00";
+            elemVisits.textContent = visits;
+    
+            var day = visitTime.getDate() + 1;
+            var month = visitTime.getMonth() + 1;
+            var hours = visitTime.getHours() + 1;
+            elemDateDiv.textContent = day + "/" + month + " " + hours + ":00";
         }
-        })();
+    })();
         </script>
     </body>
 </html>

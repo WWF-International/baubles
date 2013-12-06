@@ -1,0 +1,111 @@
+<html>
+    <head></head>
+    <body style="background:black">
+        
+
+
+<script>
+			
+			//CREATE THE CANVAS
+			
+			
+			//var canvas = document.createElement('canvas');
+			//document.body.appendChild(canvas);
+			
+			//CREATE THE CANVAS
+			var canvas = document.createElement('canvas');
+			document.body.appendChild(canvas);
+			
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			
+			var canvasWidth = window.innerWidth;
+			var canvasHeight = window.innerHeight;
+			
+			var c = canvas.getContext('2d');
+			
+			var	snowColour = "white",
+			    particles = [],
+			    j = 0;
+		
+			//LET'S INPUT SOME CODE HERE:
+			
+			setInterval(draw, 1000/60);
+			var t,t1
+            t=new Date();
+            t1=new Date();
+			function draw(){
+			
+				c.clearRect(0,0,canvasWidth,canvasHeight);
+			
+				var p = new Particle();
+				
+                if (j%10==0 &&t1.getTime()- t.getTime()<1){
+						particles.push(p);
+                        
+                }
+			t=new Date();		
+				//RUN THROUGH AN ARRAY OF PARTICLES
+				for(var i = 0; i<particles.length; i++) {
+					p = particles[i];
+					
+					
+					c.save();
+					c.translate(p.xPos,p.yPos);
+					
+					c.rotate(p.ang);
+					
+					c.scale(p.size,p.size);
+						drawFlake(p.thickness);
+					c.restore();
+				
+					//p.xPos += p.xVel;
+					//p.yPos += p.yVel;
+				
+					if(p.yPos>canvasHeight*2){
+						particles.shift();
+					}
+
+				}				
+				
+				particles.xVel += random(-0.4, 0.4);
+				j+=1;
+				t1=new Date();
+			}
+			
+			function Particle(){
+				this.size = random(0.05,0.15);
+				this.xPos = random(-30, canvasWidth + 30);
+				this.yPos = -80;
+				//this.xVel = random(-0.7, 0.7);
+				//this.yVel = random(1, 2);
+			}
+			
+			function drawCross(thickness){
+ 
+                c.beginPath();
+				c.moveTo(-40, -40);
+                c.lineTo(40,40);
+                c.moveTo(-40, 40)
+                c.lineTo(40, -40)
+                c.lineWidth=thickness ;
+				c.strokeStyle = snowColour;
+				c.stroke();
+			}
+			
+			function drawFlake(thickness) {
+				c.save();
+					drawCross(thickness);
+				c.rotate(Math.PI / 4);
+					drawCross(thickness);
+				c.restore();
+			}
+			
+			//CREATE RANDOM FUNCTION
+			function random(min, max) {
+				return Math.random() * (max - min) + min;
+			}			
+
+		</script>
+    </body>
+</html>
