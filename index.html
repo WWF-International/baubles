@@ -1,72 +1,59 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-    <!--<![endif]-->
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <style type="text/css">
-    #visits {
-                width:500px
+        
+        <style>
+            
+            body {
+                background:url('http://static.squarespace.com/static/527270e3e4b02a66778e0d7f/t/527b61f0e4b05821d4d1d9db/1383817715927/Xmas-tree-forest.jpg'); 
+                background-size:cover;
+                margin:0;
+                padding:0;
             }
+            
+            canvas {
+                margin:0;
+                padding:0;
+            }
+            
+            h1 {
+                position:absolute;
+                top:0px;
+                left:20px;
+                color: white;
+                font: normal 5em / 1em 'WWFRegular',Helvetica,Arial,sans-serif;
+            }
+            
+            h2 {
+                position:absolute;
+                top:90px;
+                left:20px;
+                color: white;
+                font: normal 3em / 1em 'WWFRegular',Helvetica,Arial,sans-serif;
+            }
+            
+            /* --------------------- FONT FACE ----------------- */
+@font-face {
+    font-family: 'WWFRegular';
+    src: url('//www.wwf.org.uk/_css/font/wwf-webfont.eot');
+    src: url('//www.wwf.org.uk/_css/font/wwf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('//www.wwf.org.uk/_css/font/wwf-webfont.woff') format('woff'),
+         url('//www.wwf.org.uk/_css/font/wwf-webfont.ttf') format('truetype'),
+         url('//www.wwf.org.uk/_css/font/wwf-webfont.svg#WWFRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+            
+            
         </style>
+        
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <!-- Add your site or application content here -->
-        <div id="stop">
-            stop
-        </div>
-        <div id="date"></div>
-        <div id="visits"></div>
         
-        <script type="text/javascript" src="arr.js"></script>
 
-<script type="text/javascript">
-    (function () {
-        "use strict";
-        /*jslint browser: true*/
+<script type="text/javascript" src="arr.js"></script>
+<script type="text/javascript" src="visualisation.js"></script>
 
-
-        var a = setInterval(getData, 1000 / 24);// run at 24 fps = 1 second per day 
-        var visitData = new Uint16Array(arr.length);
-        visitData.set(arr); // creating then filling a typed array for extra performance
-        var elemVisits = document.getElementById("visits");
-        var elemDateDiv = document.getElementById("date");
-        var elemStop = document.getElementById("stop");
-        
-        elemStop.onclick = function () {
-            window.clearInterval(a);
-        };
-        var hour = 0;
-
-
-        function getData() {
-            var visits = visitData[hour];
-            var visitTime = new Date(1351987200000 + (hour * 60 * 60 * 1000));//create date object with milliseconds date of first hour plus milliseconds in an hour * hour index
-            doTheAwesome(visits, visitTime);
-            hour = hour + 1;
-        }
-
-
-        function doTheAwesome(visits, visitTime) {
-            elemVisits.textContent = visits;
-    
-            var day = visitTime.getDate() + 1;
-            var month = visitTime.getMonth() + 1;
-            var hours = visitTime.getHours() + 1;
-            elemDateDiv.textContent = day + "/" + month + " " + hours + ":00";
-        }
-    })();
-        </script>
+<h1>Who's been visiting the WWF website this year?</h1>
+<h2>Each bauble on the tree equals one visitor to our website at the time shown below.</h2>
     </body>
 </html>
